@@ -90,9 +90,100 @@ Vimmer諸兄は首を洗って待っていてほしい。
 
 ## インストールバイナリの配布とアーリーアクセス
 
+現在のところ、Onivim2はアーリーアクセスに参加してnightly development buildをダウンロードするか、ソースコードからビルドするしかない[らしい](https://onivim.github.io/docs/other/faq#where-can-i-download-a-build)。
+アーリーアクセスに参加するためには[40ドルの支払いが必要](https://v2.onivim.io/early-access-portal)だ。
+コミュニティを支援するために、Onivim2が気に入った人はいっちょ参加してみてはどうだろうか。
+しかしまずは使ってみないとお話にならない。
+ということでソースからビルドしてみよう。
 
+なお、タイトルにもあるが、ここではWindows上でインストールを行う。
+筆者はMacを使っていないし、Linuxだったら何の問題もなくビルドできるだろう。
+Windowsでのビルドは――多くの人が**やりたくない**と思うだろう。そこにこの記事の価値がある(ドヤッ)。
 
 ## ソースからビルド
+
+### 依存関係のインストール
+
+ビルド手順は[ここ](https://onivim.github.io/docs/for-developers/building)に書かれている。
+ターミナルにはGit-bashを使う。
+管理者権限で開いておこう。ReasonのパッケージマネージャであるEsyの実行に必要なのだ。
+
+
+Git, Nodeをインストールしたら、Esyをインストールする。
+
+```bash
+$ npm install -g esy@latest
+```
+
+次に、Windows用のビルドツールを入れる。
+
+```bash
+$ npm install -g windows-build-tools
+```
+
+Linuxの場合はさらに、`revery`の依存関係のインストールが必要なのだが、Windowsでは準備はこれでおしまいだ。
+
+次にリポジトリをクローンする。
+
+```bash
+$ git clone https://github.com/onivim/oni2
+$ cd oni2
+```
+
+`master`ブランチだとやや不安なので、最新のタグを使おう。
+
+```bash
+$ git tag
+0.5.0
+v0.5.1
+v0.5.2
+
+$ git checkout v0.5.2
+```
+
+`oni2`ディレクトリ配下で、nodeの依存関係をインストールする。
+Nodeバイナリをoni2プロジェクトが提供しているものを使うために、`npm install`を使わないらしい。
+
+```bash
+$ npm install -g node-gyp
+$ node install-node-deps.js
+```
+
+ちなみに、筆者の環境だとビルドしたOnivim 2でターミナルがうまく動かなかったが、この手順からやり直すとうまくいった。
+もし同じ状況になったら試していただきたい。
+[参考](https://github.com/onivim/oni2/issues/1648)
+
+### フロントエンドのビルド
+
+ここからはEsyを使って依存関係のインストールやビルドを行っていく。
+
+```bash
+$ esy install
+
+$ esy bootstrap
+
+$ esy build
+```
+
+たまに、`esy bootstrap`のところで以下のようなエラーが出ることがある。
+
+```bash
+info building @opam/luv@github:bryphe/luv:luv.opam#8e9f2b0@d41d8cd9: done
+error: build failed with exit code: 1
+  build log:
+    # esy-build-package: building: esy-cmake@0.3.5
+    # esy-build-package: pwd: C:\Users\user\.esy\3\b\esy_cmake-0.3.5-5b613289
+    # esy-build-package: running: "bash" "-c" "./build-windows.sh"
+    C:\Users\user\AppData\Local\Temp\__esy-bash__377572354__1__.sh: 行 3: 対応する `"' を探索中に予期しないファイル終了 (EOF) です
+    C:\Users\user\AppData\Local\Temp\__esy-bash__377572354__1__.sh: 行 4: 構文エラー: 予期しないファイル終了 (EOF) です
+    error: command failed: "bash" "-c" "./build-windows.sh" (exited with 2)
+    esy-build-package: exiting with errors above...
+
+  building esy-cmake@0.3.5
+esy: exiting due to errors above
+```
+
+原因は不明だが、筆者の環境ではもう一度実行したら成功した(原因を追いかける気力はなかった)。
 
 # Onivim 2を使ってみる
 
