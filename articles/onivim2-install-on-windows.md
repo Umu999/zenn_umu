@@ -6,6 +6,7 @@ topics: ["Onivim", "Vim"]
 published: false
 ---
 
+![onivim 2 logo](https://i.imgur.com/NdJbalE.png)
 # はじめに
 
 Atomが死に、VSCodeがモダンエディタ戦争を制して一年[^1]。
@@ -16,7 +17,7 @@ VSCodeの美しいGUIと強力な拡張機能に日々助けられてはいる�
 [Onivim 2](https://v2.onivim.io/#about)はそんな諸兄のためのエディタだ。
 VSCodeのような美しいGUIと、VSCode互換の拡張機能を持つ。
 そして、ゴリゴリに練り上げられた`.vimrc`や`init.vim`をロードすることができる――将来的には[^2]。
-本当に欲しかったものがそこにある。それがOnivim 2なのだ。
+本当に欲しかったもの、それがOnivim 2なのだ。
 
 ## ライセンスについて
 
@@ -59,6 +60,7 @@ VSCodeやAtomと同じ、Electronで作られたNeoVimベースのGUIエディ�
 # Onivim2の特徴
 
 OniはReact + TypeScriptで開発されていたようだが、Onivim 2は Revery + Reasonで開発されている。
+
 ## Reason
 
 https://reasonml.github.io/docs/en/what-and-why
@@ -75,27 +77,30 @@ Reason + Reveryを使って書かれたGUIアプリはネイティブコード�
 
 ## Vimをモダンエディタで
 
-いきなり技術の話から入ってしまったが、Onivim 2が目指すところはOniと同じ、Vimの思想をモダンエディタで実現することだ。
+いきなり非本質的な技術の話から入ってしまった。悪い癖である。
+Onivim 2が目指すところはOniと同じ、Vimの思想をモダンエディタで実現することだ。
 Vimと同じモーダル（モードを切り替えて使う）テキストエディタであり、キーボードだけを使って操作できる。それゆえ生産性を最大限に高められる。
 まあ、ここでVimの良さを語るのははOnivim 2 を使ってみようなどという奇特な諸兄には釈迦に説法だろう。
 藪蛇でマサカリを投げられるのも怖いのでこの辺にしておく。
 とにかく、VSCodeっぽいVim――あるいはVimっぽいVSCode――ということだ。
-そして、Electronではパフォーマンスに問題があるためReason + Reveryに移行したということだろう。
+そして、Electronではパフォーマンスに問題があるためReason + Reveryに移行したということだ。
 英断だと思うし、自分も見習いたい（ほんまか）。
 
 ## すべてがキーボードで操作可能
 
-Vimの良さをこれ以上語らないと言ったばかりだが、ここだけは説明させてもらいたい。
 ガチのVimmer諸兄はご存じないかもしれないが、自分のようななんちゃってVimmer(あるいはVimキーバインドラバーとでも呼ぶべきか)なら、VSCodeにVimキーバインド拡張を入れてVimライクに使えることを知っているだろう。
 ではそれでVimと同じ体験ができるかというと、そうではない。
-ファイルツリーでの選択の移動など、Vimとは異なる操作（おおむねマウス操作）を強いられるところは多い。もちろんキーボードショートカットをきっちり設定すればできるのだが、それらも他の操作とぶつからないように設定するのも大変なのだ。
+ファイルツリーでの選択の移動など、Vimとは異なる操作（おおむねマウス操作）を強いられるところは多い。もちろんキーボードショートカットをきっちり設定すればできるはずだが、他の操作とぶつかって謎挙動を見せるなんてこともしょっちゅうだ。
 VSCodeにおいては「キーボードのみで操作可能」というのは「できなくはない」というだけであって、そんなことをやろうとする変態はそれなりに労苦を強いられることになるのだ、残念ながら。
 
 それに対してOnivim 2では、「すべての要素がキーボードで操作可能」である。
-それを実現するのが「[Sneak mode](#スニークモード)(以下スニークモード)」で、`Ctrl + g`を押すだけで画面上のすべての要素にショートカットキーが割り振られる。
+その思想が結実したのが「[Sneak mode](#スニークモード)(以下スニークモード)」だ。
+`Ctrl + g`を押すだけで画面上のすべての要素にショートカットキーが割り振られる。
 「エディタ(の選択)」と「エディタを閉じるボタン」に別々にショートカットキーが割り振られるのだから徹底している。
 これだけでもVSCodeから乗り換えたくなったなんちゃってVimmerは多いのではないだろうか。
-Vimに限界を感じつつも、「VSCodeはチョットなァ～～」なんて考えているVimmerにもおすすめだ。
+Vimに限界を感じつつも[^4]、「VSCodeはチョットなァ～～」なんて考えているVimmerにもおすすめだ。
+
+[^4]: Vimに限界がある、と言っているわけではない。限界を感じるのは個人の自由である。
 
 ## VSCodeの拡張機能が（一部）使える
 
@@ -107,15 +112,15 @@ VSCode互換のエディタはVSCodiumやEclipse Theiaなどがあるが、そ�
 そうした問題意識から、[Open VSX Registry](https://open-vsx.org)では、こうしたVSCode互換エディタで使用できる拡張機能を配布している。
 Onivim 2で使用できるのもこうした拡張機能だ。
 つまり、「Open VSXで配布されている、VSCode互換の拡張機能」だけを使用できる。
-ちょっとがっかりしたか？ 私もした。
+ちょっとがっかりしただろうか？ 私もした。
 でもブラウザのタブを閉じる前に、[Open VSX Registry](https://open-vsx.org)でいくつかお気に入りの拡張を検索してみるといい。
 **意外とある。**
 なんと、Microsoft製のPython拡張もある。**Microsoft製なのに！？**
 [GitHub](https://github.com/microsoft/vscode-python/blob/main/LICENSE)を見れば分かるが、VSCodeのPython拡張はMITライセンスなのだ。ありがとう、Microsoft。
 
-残念ながら、VSCodeの非常に強力な拡張機能であるRemote development(SSH/WSL/Container)は[オープンソースではない](https://code.visualstudio.com/docs/remote/faq#_why-arent-the-remote-development-extensions-or-their-components-open-source)ため、Onivim 2での利用は絶望的だろう、今のところ。Microsoftに期待したい（お願いします）。
+残念ながら、VSCodeの非常に強力な拡張機能であるRemote development(SSH/WSL/Container)は[オープンソースではない](https://code.visualstudio.com/docs/remote/faq#_why-arent-the-remote-development-extensions-or-their-components-open-source)ため、Onivim 2での利用は絶望的だろう、今のところ。Microsoftの懐の深さに期待したい（？）。
 
-## Vim/NeoVimの設定は（最終的には）ロードできるようになる
+## Vim/NeoVimの設定は（将来的には）ロードできるようになる
 
 今はまだできない。
 [FAQ](https://onivim.github.io/docs/other/faq#can-i-use-my-initvim-or-vimrc-with-onivim-2)によると、ベータ版のマイルストーンに `init.vim`と`.vimrc`の使用がスケジュールされているらしい。
@@ -127,13 +132,15 @@ Vimmer諸兄は首を洗って待っていてほしい。
 
 ## インストールバイナリの配布とアーリーアクセス
 
-現在のところ、Onivim2はアーリーアクセスに参加してnightly development buildをダウンロードするか、ソースコードからビルドするしかない[らしい](https://onivim.github.io/docs/other/faq#where-can-i-download-a-build)。
-アーリーアクセスに参加するためには[40ドルの支払いが必要](https://v2.onivim.io/early-access-portal)だ。
+現在のところ、Onivim2はアーリーアクセスに参加してnightly development buildをダウンロードするか、ソースコードからビルドするしか[ない](https://onivim.github.io/docs/other/faq#where-can-i-download-a-build)。
+アーリーアクセスに参加するためには[40ドルの支払いが必要](https://v2.onivim.io/early-access-portal)だ。ライセンスの説明でも書いたが、この価格は開発が進むごとに値上がりする。
 コミュニティを支援するために、Onivim2が気に入った人はいっちょ参加してみてはどうだろうか。
 しかしまずは使ってみないとお話にならない。
 ということでソースからビルドしてみよう。
+しつこいようだが、利用は非商用または教育目的のみに限る。
+分からない人はもう一度[ライセンスの章](#ライセンスについて)を読み返してほしい。
 
-なお、タイトルにもあるが、ここではWindows上でインストールを行う。
+なお、ここではWindows上でインストールを行う。
 筆者はMacを使っていないし、Linuxだったら何の問題もなくビルドできるだろう。
 Windowsでのビルドは――多くの人が**やりたくない**と思うだろう。そこにこの記事の価値がある(ドヤッ)。
 
@@ -144,9 +151,11 @@ Windowsでのビルドは――多くの人が**やりたくない**と思うだ
 ビルド手順は[ここ](https://onivim.github.io/docs/for-developers/building)に書かれている。
 ターミナルにはGit-bashを使う。
 管理者権限で開いておこう。ReasonのパッケージマネージャであるEsyの実行に必要なのだ。
+ここでPowershellを選んだり、WSL2を選んだりしてもうまくいくことは保証しない。
 
 
-Git, Nodeをインストールしたら、Esyをインストールする。
+とりあえずGit, Nodeはインストールしておこう。
+npmが使えるようになったらEsyをインストールする。
 
 ```bash
 $ npm install -g esy@latest
@@ -210,7 +219,7 @@ error: build failed with exit code: 1
   build log:
     # esy-build-package: building: esy-cmake@0.3.5
     # esy-build-package: pwd: C:\Users\user\.esy\3\b\esy_cmake-0.3.5-5b613289
-    # esy-build-package: running: "bash" "-c" "./build-windows.sh"
+# esy-build-package: running: "bash" "-c" "./build-windows.sh"
     C:\Users\user\AppData\Local\Temp\__esy-bash__377572354__1__.sh: 行 3: 対応する `"' を探索中に予期しないファイル終了 (EOF) です
     C:\Users\user\AppData\Local\Temp\__esy-bash__377572354__1__.sh: 行 4: 構文エラー: 予期しないファイル終了 (EOF) です
     error: command failed: "bash" "-c" "./build-windows.sh" (exited with 2)
@@ -222,12 +231,82 @@ esy: exiting due to errors above
 
 原因は不明だが、筆者の環境ではもう一度実行したら成功した(原因を追いかける気力はなかった)。
 
+ビルドが完了したら、`esy run`でOnivim 2を動かすことができる。
+とりあえず使う分にはこれでよいだろう。
+
+ちゃんとインストールするには先に進む。
+
+### Onivim 2をインストールする
+
+インストールのためにリリースビルドを作成する。
+
+```bash
+$ esy '@release' run -f --checkhealth
+$ esy '@release' install
+$ esy '@release' create
+```
+
+これらのコマンドが成功すると、`{projectRoot}/scripts/windows/publish.ps1`スクリプトを実行できるようになる。
+
+Powershellを管理者権限で開いて、projectRootまで移動しよう。
+
+```powershell
+PS C:\Users\user\repositories\oni2> .\scripts\windows\publish.ps1`
+```
+
+このスクリプトが終了すると、`{projectRoot}/_publish`というフォルダが作成され、中にインストーラの実行ファイルが格納されている。
+実行してOnivim 2をインストールする。
 # Onivim 2を使ってみる
 
+インストールが終わったら、エディタを起動してみよう。
+起動はスタートメニューからでもよいし、Git-bashから`oni2`コマンドを実行してもよい。
+（Git-bashがコマンドを認識するためには、再起動が必要かもしれない。）
+
 ## ターミナルの起動
+
+ターミナルの起動はVimと同様、 `:term`と打ち込む。
+VSCodeではコマンドを打ち込む際は `Ctrl + Shift + p` でコマンドパレットを起動するが、Onivim 2では `:`と打つだけでコマンドパレットが表示される。
+
+ところで、VSCodeではターミナルのトグルは ``Ctrl + ` `` でできる。
+Onivim 2ではこのようにターミナルを閉じたり開いたりすることはできない[らしい](https://github.com/onivim/oni2/issues/2298)。
+上記のIssueを読むと、VSCodeではターミナルは基本的に底部のペインに表示されるのに対し、Onivim 2のターミナルは通常のエディタと同様に自由にレイアウトできるためトグルの対象を決められないということのようだ。
+
+VSCodeの統合ターミナルと比べた場合の違いは大きく二つだ。
+一つは先ほども言及したように、ターミナルがエディタと同様に自由にレイアウトできること。
+もう一つは`Terminal Normal mode`を備えることだ。
+これはVSCodeVimで満足行かなかったVimキーバインドラバー諸氏にはうれしい機能だろう。
+
+### Terminal Normal mode
+
+https://onivim.github.io/vid/terminal-normal-mode.mp4
+(動画)
+
+ターミナルにフォーカスが当たっている状態で `Ctrl + \` `Ctrl + n`を押すとターミナルが読み取り専用になり、Vimキーバインドで移動・コピーできるようになる。
+切り替えの際にテキストの色やフォントが変わってしまうのがつらいところだが、シームレスに移行できればコマンドの修正やコピペがかなり簡単になるのではないだろうか。
+`a` や`i`などInsertモードに移行すると普通に入力できるようになる。
+
+ただ残念なのが、`Shift + i`を入力しても行頭にカーソルが飛ばないとか、そもそもInsertモードに戻るとカーソル位置が入力行の行末になってしまうとか、Vimらしくない挙動をする点だ。
+ブラッシュアップに期待したい。
 
 ## ファイルツリーの利用
 
 ## スニークモード
+
+
+## デバッグモードでの起動
+
+不具合らしき挙動を見つけたら、デバッグモードで起動してログを見てみよう。
+GitHubにバグ報告をする際もデバッグログがあると解析がスムーズだろう。
+
+デバッグモードでの起動はCLIで行う。
+
+Git-bashなどから
+
+```bash
+oni2 -f --debug
+```
+
+と打つ。`-f`はシェルにデバッグログを出力するためのオプションだ。
+行頭に `[ERROR]`と出ているログがなければひとまずは大丈夫だろう。
 
 ## 使ってみた感想
