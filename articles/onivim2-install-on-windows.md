@@ -3,7 +3,7 @@ title: "VSCodeライクなVim。Onivim 2でなんちゃってVimmerを超えて�
 emoji: "👹"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Onivim", "Vim"]
-published: false
+published: true
 ---
 
 ![onivim 2 logo](https://i.imgur.com/NdJbalE.png)
